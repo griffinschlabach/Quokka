@@ -16,6 +16,7 @@
 		A351CD892D6E43BB00C4DBF2 /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A351CD882D6E43BA00C4DBF2 /* GoalsView.swift */; };
 		A351CD8B2D6E43CA00C4DBF2 /* MainProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A351CD8A2D6E43CA00C4DBF2 /* MainProfileView.swift */; };
 		A351CD8D2D6E45E500C4DBF2 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A351CD8C2D6E45E500C4DBF2 /* MainTabView.swift */; };
+		FC3D25592D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3D25582D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		A351CD882D6E43BA00C4DBF2 /* GoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsView.swift; sourceTree = "<group>"; };
 		A351CD8A2D6E43CA00C4DBF2 /* MainProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileView.swift; sourceTree = "<group>"; };
 		A351CD8C2D6E45E500C4DBF2 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		FC3D25582D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonFootprintCalculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		A351CD812D6CEECA00C4DBF2 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				FC3D25582D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift */,
 				A351CD822D6CEEE100C4DBF2 /* Constants.swift */,
 			);
 			path = Controls;
@@ -174,6 +177,7 @@
 				A351CD892D6E43BB00C4DBF2 /* GoalsView.swift in Sources */,
 				A351CD8D2D6E45E500C4DBF2 /* MainTabView.swift in Sources */,
 				A351CD832D6CEEE100C4DBF2 /* Constants.swift in Sources */,
+				FC3D25592D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift in Sources */,
 				A351CD8B2D6E43CA00C4DBF2 /* MainProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
