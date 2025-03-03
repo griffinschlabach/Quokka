@@ -5,8 +5,14 @@
 //  Created by Griffin Schlabach (student LM) on 2/28/25.
 //
 
+//UserID Firebase G8dnqDw6Cae6t9XTGmkv
+
 import Foundation
 import SwiftUI
+import FirebaseCore
+import FirebaseAuth
+import FirebaseFirestore
+
 
 class User : ObservableObject {
     
@@ -19,4 +25,7 @@ class User : ObservableObject {
         self.password = password
     }
     
+    
+    
 }
+
