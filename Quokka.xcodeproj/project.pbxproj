@@ -27,6 +27,8 @@
 		A351CDA02D72310C00C4DBF2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A351CD9F2D72310C00C4DBF2 /* FirebaseStorage */; };
 		A351CDA22D7233A100C4DBF2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A351CDA12D7233A100C4DBF2 /* User.swift */; };
 		A351CDA42D72345900C4DBF2 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = A351CDA32D72345900C4DBF2 /* FirebaseStorageCombine-Community */; };
+		A351CDA62D762EE100C4DBF2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A351CDA52D762EE100C4DBF2 /* FirebaseFirestore */; };
+		A351CDA82D762EE100C4DBF2 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = A351CDA72D762EE100C4DBF2 /* FirebaseFirestoreCombine-Community */; };
 		FC3D25592D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3D25582D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +56,9 @@
 				A351CD922D72310C00C4DBF2 /* FirebaseAnalytics in Frameworks */,
 				A351CD962D72310C00C4DBF2 /* FirebaseCore in Frameworks */,
 				A351CD9C2D72310C00C4DBF2 /* FirebasePerformance in Frameworks */,
+				A351CDA62D762EE100C4DBF2 /* FirebaseFirestore in Frameworks */,
 				A351CD9E2D72310C00C4DBF2 /* FirebaseRemoteConfig in Frameworks */,
+				A351CDA82D762EE100C4DBF2 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				A351CD9A2D72310C00C4DBF2 /* FirebaseFunctions in Frameworks */,
 				A351CDA02D72310C00C4DBF2 /* FirebaseStorage in Frameworks */,
 				A351CD982D72310C00C4DBF2 /* FirebaseDatabase in Frameworks */,
@@ -151,6 +155,8 @@
 				A351CD9D2D72310C00C4DBF2 /* FirebaseRemoteConfig */,
 				A351CD9F2D72310C00C4DBF2 /* FirebaseStorage */,
 				A351CDA32D72345900C4DBF2 /* FirebaseStorageCombine-Community */,
+				A351CDA52D762EE100C4DBF2 /* FirebaseFirestore */,
+				A351CDA72D762EE100C4DBF2 /* FirebaseFirestoreCombine-Community */,
 			);
 			productName = Quokka;
 			productReference = A351CD6F2D6CE87A00C4DBF2 /* Quokka.app */;
@@ -479,6 +485,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A351CD902D72310C00C4DBF2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		A351CDA52D762EE100C4DBF2 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A351CD902D72310C00C4DBF2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		A351CDA72D762EE100C4DBF2 /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A351CD902D72310C00C4DBF2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
