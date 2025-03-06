@@ -29,6 +29,7 @@
 		A351CDA42D72345900C4DBF2 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = A351CDA32D72345900C4DBF2 /* FirebaseStorageCombine-Community */; };
 		A351CDA62D762EE100C4DBF2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A351CDA52D762EE100C4DBF2 /* FirebaseFirestore */; };
 		A351CDA82D762EE100C4DBF2 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = A351CDA72D762EE100C4DBF2 /* FirebaseFirestoreCombine-Community */; };
+		A351CDB02D7A16E100C4DBF2 /* DataBaseTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A351CDAF2D7A16E100C4DBF2 /* DataBaseTestView.swift */; };
 		FC3D25592D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3D25582D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		A351CD8C2D6E45E500C4DBF2 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A351CD8E2D722FCE00C4DBF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A351CDA12D7233A100C4DBF2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A351CDAF2D7A16E100C4DBF2 /* DataBaseTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseTestView.swift; sourceTree = "<group>"; };
 		FC3D25582D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonFootprintCalculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +117,7 @@
 				A351CD862D6E43AD00C4DBF2 /* ChecklistView.swift */,
 				A351CD882D6E43BA00C4DBF2 /* GoalsView.swift */,
 				A351CD8A2D6E43CA00C4DBF2 /* MainProfileView.swift */,
+				A351CDAF2D7A16E100C4DBF2 /* DataBaseTestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				A351CD8D2D6E45E500C4DBF2 /* MainTabView.swift in Sources */,
 				A351CDA22D7233A100C4DBF2 /* User.swift in Sources */,
 				A351CD832D6CEEE100C4DBF2 /* Constants.swift in Sources */,
+				A351CDB02D7A16E100C4DBF2 /* DataBaseTestView.swift in Sources */,
 				FC3D25592D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift in Sources */,
 				A351CD8B2D6E43CA00C4DBF2 /* MainProfileView.swift in Sources */,
 			);

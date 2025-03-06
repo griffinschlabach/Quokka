@@ -26,6 +26,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct QuokkaApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var user: User = User()
     
     var body: some Scene {
         WindowGroup {
