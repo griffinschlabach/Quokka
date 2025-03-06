@@ -8,7 +8,7 @@
 import SwiftUI
 import FirebaseDatabase
 
-// Updated Event model without status and superBowl
+// all data associated with each user
 struct UserData: Identifiable {
     let id: String
     let name: String
@@ -22,15 +22,18 @@ struct UserData: Identifiable {
     }
 }
 
+//view displayed in TabView as TEST TEST
 struct DataBaseTestView: View {
-    // State to hold the decoded event and saved UUID
-    @State private var decodedUser: UserData?
-    @State private var statusMessage: String = ""
-    @State private var savedUserUUID: String?
+    //user we look at
+    @Binding var decodedUserData: UserData?
+    //displays action
+    @Binding var statusMessage: String
+    //user id we look at
+    @Binding var savedUserUUID: String?
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Firebase Database Examples")
+            Text("Test Database")
                 .font(.title)
                 .padding()
             
@@ -46,6 +49,7 @@ struct DataBaseTestView: View {
                     .cornerRadius(10)
             }
             
+            //if savedUserUUID == nil, this button will not retrieve any data
             Button(action: {
                 Task {
                     await readUserFromFirebase()
@@ -61,8 +65,8 @@ struct DataBaseTestView: View {
             }
             .disabled(savedUserUUID == nil)
             
-            // Display decoded event or status
-            if let user = decodedUser {
+            // Displays
+            if let user = decodedUserData {
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Event ID: \(user.id)")
                         .font(.subheadline)
@@ -85,54 +89,61 @@ struct DataBaseTestView: View {
         .padding()
     }
     
-    // Function to write the simplified event to Firebase
-    func writeUserToFirebase() {
+    //adds user to database
+    public func writeUserToFirebase() {
         let userUUID = UUID().uuidString // Generate UUID
         let usersRef = Database.database().reference().child("users")
-        let userRef = usersRef.child(userUUID)
+        let userRef = usersRef.child(userUUID) //name of position in the database
         
+        //manually input desired data in dictionary form to be uploaded
         let userData: [String: Any] = [
             "name": "Lucy",
             "email": "lucy@gmail.com",
         ]
         
+        //creates value at the position
         userRef.setValue(userData) { (error, _) in
             if let error = error {
                 statusMessage = "Failed to write: \(error.localizedDescription)"
-            } else {
-                savedUserUUID = userUUID // Save the UUID
+            } else { //if there's no error it saves the UUID
+                savedUserUUID = userUUID //saves the id upon creation of the user for later use
                 statusMessage = "Wrote user with UUID: \(userUUID)"
             }
         }
     }
     
-    // Async function to read and decode the event from Firebase
-    func readUserFromFirebase() async {
+    //TODO - add an id parameter so we can access the userdata without instant creation
+    public func readUserFromFirebase() async {
+        
+        //checks for a saved id
         guard let uuid = savedUserUUID else {
             statusMessage = "No user UUID saved to read"
-            decodedUser = nil
-            return
+            decodedUserData = nil
+            return //ends early if no id
         }
         
+        //checks for specific id
         guard let data = try? await Database.database().reference().child("users/\(uuid)").getData() else {
             statusMessage = "Failed to fetch user data"
-            decodedUser = nil
-            return
+            decodedUserData = nil
+            return //ends early if fails
         }
         
+        //checks for presence of ANY data in correct form in position
         guard let dictionary = data.value as? [String: Any] else {
             statusMessage = "Failed to cast user data to dictionary"
-            decodedUser = nil
-            return
+            decodedUserData = nil
+            return //ends early if fails
         }
         
+        //if search succeeds past all previous checks
         let user = UserData(id: uuid, data: dictionary)
-        decodedUser = user
+        decodedUserData = user //retreives userdata and saves it to a state varaible
         statusMessage = "Successfully read event"
     }
 }
 
 // Preview provider
 #Preview {
-    DataBaseTestView()
+    DataBaseTestView(decodedUserData: Binding.constant(UserData(id: "", data: ["name" : ""])), statusMessage: Binding.constant(""), savedUserUUID: Binding.constant(""))
 }

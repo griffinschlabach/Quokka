@@ -9,6 +9,14 @@ import SwiftUI
 
 struct MainTabView: View {
     
+    //user we look at
+    @Binding var decodedUserData: UserData?
+    //displays action
+    @Binding var statusMessage: String
+    //user id we look at
+    @Binding var savedUserUUID: String?
+    
+    
     var body: some View {
         TabView {
             GoalsView()
@@ -21,12 +29,12 @@ struct MainTabView: View {
                     Image(systemName:"person.circle.fill")
                     Text("Daily")
                 }
-            MainProfileView()
+            MainProfileView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID:$savedUserUUID)
                 .tabItem {
                     Image(systemName:"person.circle.fill")
                     Text("Profile")
                 }
-            DataBaseTestView()
+            DataBaseTestView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID:$savedUserUUID)
                 .tabItem {
                     Image(systemName:"person.circle.fill")
                     Text("TEST TEST")
@@ -37,5 +45,5 @@ struct MainTabView: View {
 }
 
 #Preview {
-    MainTabView()
+    MainTabView(decodedUserData: Binding.constant(UserData(id: "", data: ["name" : ""])), statusMessage: Binding.constant(""), savedUserUUID: Binding.constant(""))
 }

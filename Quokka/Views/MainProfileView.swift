@@ -9,27 +9,16 @@ import SwiftUI
 
 struct MainProfileView: View {
     
+    //user we look at
+    @Binding var decodedUserData: UserData?
+    //displays action
+    @Binding var statusMessage: String
+    //user id we look at
+    @Binding var savedUserUUID: String?
     
     var body: some View {
-        
-        
-        if false {
-            VStack(alignment: .leading, spacing: 10) {
-//                Text("Event ID: \(user.id)")
-//                    .font(.subheadline)
-//                Text("Name: \(user.name)")
-//                    .font(.headline)
-//                Text("Email: \(user.email)")
-//                    .font(.subheadline)
-            }
-            .padding()
-            .background(Color.gray.opacity(0.1))
-            .cornerRadius(8)
-        } else {
-            Text("Awesome Profile View!")
-                .font(.body)
-                .foregroundColor(.gray)
-        }
+        Text(statusMessage)
+            .font(Constants.mainfont)
         
         
     }
@@ -37,5 +26,5 @@ struct MainProfileView: View {
 }
 
 #Preview {
-    MainProfileView()
+    MainProfileView(decodedUserData: Binding.constant(UserData(id: "", data: ["name" : ""])), statusMessage: Binding.constant(""), savedUserUUID: Binding.constant(""))
 }
