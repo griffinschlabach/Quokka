@@ -26,6 +26,11 @@ struct MainTabView: View {
                     Image(systemName:"person.circle.fill")
                     Text("Profile")
                 }
+            DataBaseTestView()
+                .tabItem {
+                    Image(systemName:"person.circle.fill")
+                    Text("TEST TEST")
+                }
             
         }
     }

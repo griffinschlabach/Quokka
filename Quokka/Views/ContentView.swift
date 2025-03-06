@@ -9,11 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject var user: User
-    
     var body: some View {
         
-        DataBaseTestView()
+        MainTabView()
         
         
     }
@@ -21,6 +19,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environmentObject(User())
     
 }
