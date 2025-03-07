@@ -20,11 +20,11 @@ struct MainProfileView: View {
         
         if let user = decodedUserData {
             VStack(alignment: .leading, spacing: 10) {
-                
                 Text("Name: \(user.name)")
                     .font(.headline)
                 Text("Email: \(user.email)")
                     .font(.subheadline)
+                Text("Long Flight Hours: \(user.longFlightHours)")
             }
             .padding()
             .background(Color.gray.opacity(0.1))
