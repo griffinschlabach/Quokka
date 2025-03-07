@@ -17,9 +17,23 @@ struct MainProfileView: View {
     @Binding var savedUserUUID: String?
     
     var body: some View {
-        Text(statusMessage)
-            .font(Constants.mainfont)
         
+        if let user = decodedUserData {
+            VStack(alignment: .leading, spacing: 10) {
+                
+                Text("Name: \(user.name)")
+                    .font(.headline)
+                Text("Email: \(user.email)")
+                    .font(.subheadline)
+            }
+            .padding()
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(8)
+        }
+        else {
+            Text(statusMessage)
+                .font(Constants.mainfont)
+        }
         
     }
     
