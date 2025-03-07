@@ -8,10 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    //user we look at
+    @State var decodedUserData: UserData?
+    //displays action
+    @State var statusMessage: String = "No Action Taken Yet"
+    //user id we look at
+    @State var savedUserUUID: String?
+    
     
     var body: some View {
         
-        MainTabView()
+        MainTabView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID:$savedUserUUID)
         
         
     }
@@ -19,4 +26,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+    
 }
