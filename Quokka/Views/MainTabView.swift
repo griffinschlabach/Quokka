@@ -9,7 +9,12 @@ import SwiftUI
 
 struct MainTabView: View {
     
-    @StateObject var viewModel = MainTabViewViewModel()
+    //user we look at
+    @Binding var decodedUserData: UserData?
+    //displays action
+    @Binding var statusMessage: String
+    //user id we look at
+    @Binding var savedUserUUID: String?
     
     @State private var items = [
         Item(name: "go vegan", isCompleted: false),
@@ -55,11 +60,16 @@ struct MainTabView: View {
                     Image(systemName:"person.circle.fill")
                     Text("Profile")
                 }
+            DataBaseTestView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID:$savedUserUUID)
+                .tabItem {
+                    Image(systemName:"person.circle.fill")
+                    Text("TEST TEST")
+                }
             
         }
     }
 }
 
 #Preview {
-    MainTabView()
+    MainTabView(decodedUserData: Binding.constant(UserData(id: "", data: ["name" : ""])), statusMessage: Binding.constant(""), savedUserUUID: Binding.constant(""))
 }
