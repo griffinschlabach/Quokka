@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct GoalsView: View {
+    
     var body: some View {
-        Text("Awesome Goals View!")
+        Text("goals")
     }
 }
-
 #Preview {
     GoalsView()
 }
