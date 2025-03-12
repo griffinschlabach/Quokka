@@ -25,6 +25,7 @@ struct MainProfileView: View {
                 Text("Email: \(user.email)")
                     .font(.subheadline)
                 Text("Long Flight Hours: \(user.longFlightHours)")
+                Text("Diet Footprint: \(String(format: "%.2f", user.dietFootprint))")
             }
             .padding()
             .background(Color.gray.opacity(0.1))
