@@ -82,7 +82,7 @@ struct DataBaseTestView: View {
                     await readUserFromFirebase()
                 }
             }) {
-                Text("Read Event from Firebase")
+                Text("Spit User from Firebase")
                     .font(.headline)
                     .padding()
                     .frame(maxWidth: .infinity)
@@ -91,6 +91,20 @@ struct DataBaseTestView: View {
                     .cornerRadius(10)
             }
             .disabled(savedUserUUID == nil)
+            
+            Button(action: {
+                Task {
+                    await getUserFromFirebase(id:"A15E56B5-6CAA-4CB2-91B4-F5F9D207F1A7")
+                }
+            }) {
+                Text("Get User from Firebase")
+                    .font(.headline)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.green)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
             
             // Displays
             if let user = decodedUserData {
@@ -122,8 +136,6 @@ struct DataBaseTestView: View {
         let usersRef = Database.database().reference().child("users")
         let userRef = usersRef.child(userUUID) //name of position in the database
         
-        let chickens = 5.0
-        let cows = 6.0
         
         //manually input desired data in dictionary form to be uploaded
         let userDataOne: [String: Any] = [
@@ -173,6 +185,34 @@ struct DataBaseTestView: View {
         let user = UserData(id: uuid, data: dictionary)
         decodedUserData = user //retreives userdata and saves it to a state varaible
         statusMessage = "Successfully read event"
+    }
+    
+    public func getUserFromFirebase(id:String?) async {
+        //checks for a saved id
+        guard let uuid = id else {
+            statusMessage = "No user UUID saved to read"
+            decodedUserData = nil
+            return //ends early if no id
+        }
+        
+        //checks for specific id
+        guard let data = try? await Database.database().reference().child("users/\(uuid)").getData() else {
+            statusMessage = "Failed to fetch user data"
+            decodedUserData = nil
+            return //ends early if fails
+        }
+        
+        //checks for presence of ANY data in correct form in position
+        guard let dictionary = data.value as? [String: Any] else {
+            statusMessage = "Failed to cast user data to dictionary"
+            decodedUserData = nil
+            return //ends early if fails
+        }
+        
+        //if search succeeds past all previous checks
+        let user = UserData(id: uuid, data: dictionary)
+        decodedUserData = user //retreives userdata and saves it to a state varaible
+        statusMessage = "Successfully found event"
     }
 }
 
