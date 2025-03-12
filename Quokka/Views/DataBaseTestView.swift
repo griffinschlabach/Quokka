@@ -13,9 +13,9 @@ struct UserData: Identifiable {
     let id: String
     let name: String
     let email: String
-    let porkKg,fishKg, eggsKg, cheeseKg, dairyKg, percentLocalFood, wasteKgPerWeek, recyclePercentage,
-    clothingSpent, electronicsSpent, otherGoodsSpent, annualElectricityKWh,renewableEnergyPercentage,
-    baseHousingEmissinos, householdSize, distanceCarmKm, carEmissionFactor, carpoolPercentage, distanceBusKm, distanceTrainKm, shortFlightHouse, longFlightHours : Double
+    let porkKg, beefLambKg, poultryKg, fishKg, eggsKg, cheeseKg, dairyKg, percentLocalFood, wasteKgPerWeek, recyclePercentage,
+        clothingSpent, electronicsSpent, otherGoodsSpent, annualElectricityKWh,renewableEnergyPercentage,
+        baseHousingEmissions, householdSize, distanceCarKm, carEmissionFactor, carpoolPercentage, distanceBusKm, distanceTrainKm, shortFlightHours, longFlightHours : Double
     
     
     // Decode from Firebase dictionary
@@ -24,6 +24,8 @@ struct UserData: Identifiable {
         self.name = data["name"] as? String ?? "Unknown User"
         self.email = data["email"] as? String ?? "Unkown User"
         self.porkKg = data["porkKg"] as? Double ?? 1.0
+        self.beefLambKg = data["beefLambKg"] as? Double ?? 1.0
+        self.poultryKg = data["poultryKg"] as? Double ?? 1.0
         self.fishKg = data["fishKg"] as? Double ?? 1.0
         self.eggsKg = data["eggsKg"] as? Double ?? 1.0
         self.cheeseKg = data["cheeseKg"] as? Double ?? 1.0
@@ -36,15 +38,87 @@ struct UserData: Identifiable {
         self.otherGoodsSpent = data["otherGoodsSpent"] as? Double ?? 1.0
         self.annualElectricityKWh = data["annualElectricityKWh"] as? Double ?? 1.0
         self.renewableEnergyPercentage = data["renewableEnergyPercentage"] as? Double ?? 1.0
-        self.baseHousingEmissinos = data["baseHousingEmissinos"] as? Double ?? 1.0
+        self.baseHousingEmissions = data["baseHousingEmissions"] as? Double ?? 1.0
         self.householdSize = data["householdSize"] as? Double ?? 1.0
-        self.distanceCarmKm = data["distanceCarmKm"] as? Double ?? 1.0
+        self.distanceCarKm = data["distanceCarKm"] as? Double ?? 1.0
         self.carEmissionFactor = data["carEmissionFactor"] as? Double ?? 1.0
         self.carpoolPercentage = data["carpoolPercentage"] as? Double ?? 1.0
         self.distanceBusKm = data["distanceBusKm"] as? Double ?? 1.0
         self.distanceTrainKm = data["distanceTrainKm"] as? Double ?? 1.0
-        self.shortFlightHouse = data["shortFlightHouse"] as? Double ?? 1.0
+        self.shortFlightHours = data["shortFlightHouse"] as? Double ?? 1.0
         self.longFlightHours = data["longFlightHours"] as? Double ?? 1.0
+    }
+    
+    // Computed properites for each category
+    
+    var dietFootprint: Double {
+        let emissions = (beefLambKg * 27) + (porkKg * 12) + (poultryKg * 6) +
+        (fishKg * 5) + (eggsKg * 4.5) + (cheeseKg * 13.5) + (dairyKg * 3.2)
+        return emissions
+    }
+    
+    var foodTransportFootprint: Double {
+        let importedFoodFactor = (100 - percentLocalFood) / 100
+        let estimatedFoodKg = beefLambKg + porkKg + poultryKg + fishKg + eggsKg + cheeseKg + dairyKg
+        return estimatedFoodKg * importedFoodFactor * (2.5 - 0.2)
+    }
+    
+    var wasteFootprint: Double {
+        let yearlyWaste = wasteKgPerWeek * 52
+        let baseEmission = yearlyWaste * 2.52
+        let adjustedEmission = baseEmission * (1 - (0.5 * recyclePercentage / 100))
+        return adjustedEmission
+    }
+    
+    var shoppingFootprint: Double {
+        let clothingEmissions = clothingSpent * 50
+        let electronicsEmissions = electronicsSpent * 100
+        let otherGoodsEmissions = otherGoodsSpent * 70
+        return clothingEmissions + electronicsEmissions + otherGoodsEmissions
+    }
+    
+    var electricityFootprint: Double {
+        let adjustedElectricity = (1 - renewableEnergyPercentage / 100)
+        return annualElectricityKWh * 0.92 * adjustedElectricity
+    }
+    
+    var housingFootprint: Double {
+        return baseHousingEmissions / Double(householdSize)
+    }
+    
+    var carFootprint: Double {
+        let adjustedCarTravel = distanceCarKm * carEmissionFactor * (1 - carpoolPercentage / 100)
+        return adjustedCarTravel
+    }
+    
+    var publicTransportFootprint: Double {
+        return (distanceBusKm * 0.09) + (distanceTrainKm * 0.04)
+    }
+    
+    var flightFootprint: Double {
+        return (shortFlightHours * 255) + (longFlightHours * 150)
+    }
+    
+    // TOTAL CARBON FOOTPRINT CALCULATION
+    
+    var totalFootprint: Double {
+        return dietFootprint +
+        foodTransportFootprint +
+        wasteFootprint +
+        shoppingFootprint +
+        electricityFootprint +
+        housingFootprint +
+        carFootprint +
+        publicTransportFootprint +
+        flightFootprint
+    }
+    
+    var totalLandUsage: Double {
+        return ((totalFootprint)/1000.0) * 0.0073  // in km^2
+    }
+    
+    var totalEarths: Double {
+        return totalLandUsage/510100000.0
     }
 }
 
@@ -135,8 +209,7 @@ struct DataBaseTestView: View {
         let userUUID = UUID().uuidString // Generate UUID
         let usersRef = Database.database().reference().child("users")
         let userRef = usersRef.child(userUUID) //name of position in the database
-        
-        
+     
         //manually input desired data in dictionary form to be uploaded
         let userDataOne: [String: Any] = [
             "name": "Lucy",
@@ -144,7 +217,7 @@ struct DataBaseTestView: View {
         ]
         let userData = userDataOne.merging(extraUserData) { (current, new) in new }
         
-                
+        
         
         //creates value at the position
         userRef.setValue(userData) { (error, _) in
