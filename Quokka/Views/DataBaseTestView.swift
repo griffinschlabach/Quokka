@@ -13,12 +13,38 @@ struct UserData: Identifiable {
     let id: String
     let name: String
     let email: String
+    let porkKg,fishKg, eggsKg, cheeseKg, dairyKg, percentLocalFood, wasteKgPerWeek, recyclePercentage,
+    clothingSpent, electronicsSpent, otherGoodsSpent, annualElectricityKWh,renewableEnergyPercentage,
+    baseHousingEmissinos, householdSize, distanceCarmKm, carEmissionFactor, carpoolPercentage, distanceBusKm, distanceTrainKm, shortFlightHouse, longFlightHours : Double
+    
     
     // Decode from Firebase dictionary
     init(id: String, data: [String: Any]) {
         self.id = id
         self.name = data["name"] as? String ?? "Unknown User"
         self.email = data["email"] as? String ?? "Unkown User"
+        self.porkKg = data["porkKg"] as? Double ?? 1.0
+        self.fishKg = data["fishKg"] as? Double ?? 1.0
+        self.eggsKg = data["eggsKg"] as? Double ?? 1.0
+        self.cheeseKg = data["cheeseKg"] as? Double ?? 1.0
+        self.dairyKg = data["dairyKg"] as? Double ?? 1.0
+        self.percentLocalFood = data["percentLocalFood"] as? Double ?? 1.0
+        self.wasteKgPerWeek = data["wasteKgPerWeek"] as? Double ?? 1.0
+        self.recyclePercentage = data["recyclePercentage"] as? Double ?? 1.0
+        self.clothingSpent = data["clothingSpent"] as? Double ?? 1.0
+        self.electronicsSpent = data["electronicsSpent"] as? Double ?? 1.0
+        self.otherGoodsSpent = data["otherGoodsSpent"] as? Double ?? 1.0
+        self.annualElectricityKWh = data["annualElectricityKWh"] as? Double ?? 1.0
+        self.renewableEnergyPercentage = data["renewableEnergyPercentage"] as? Double ?? 1.0
+        self.baseHousingEmissinos = data["baseHousingEmissinos"] as? Double ?? 1.0
+        self.householdSize = data["householdSize"] as? Double ?? 1.0
+        self.distanceCarmKm = data["distanceCarmKm"] as? Double ?? 1.0
+        self.carEmissionFactor = data["carEmissionFactor"] as? Double ?? 1.0
+        self.carpoolPercentage = data["carpoolPercentage"] as? Double ?? 1.0
+        self.distanceBusKm = data["distanceBusKm"] as? Double ?? 1.0
+        self.distanceTrainKm = data["distanceTrainKm"] as? Double ?? 1.0
+        self.shortFlightHouse = data["shortFlightHouse"] as? Double ?? 1.0
+        self.longFlightHours = data["longFlightHours"] as? Double ?? 1.0
     }
 }
 
@@ -38,7 +64,8 @@ struct DataBaseTestView: View {
                 .padding()
             
             Button(action: {
-                writeUserToFirebase()
+                let calculator = CarbonFootprintCalculator()
+                writeUserToFirebase(extraUserData:calculator.data)
             }) {
                 Text("Write User to Firebase")
                     .font(.headline)
@@ -90,16 +117,22 @@ struct DataBaseTestView: View {
     }
     
     //adds user to database
-    public func writeUserToFirebase() {
+    public func writeUserToFirebase(extraUserData :[String:Any]) {
         let userUUID = UUID().uuidString // Generate UUID
         let usersRef = Database.database().reference().child("users")
         let userRef = usersRef.child(userUUID) //name of position in the database
         
+        let chickens = 5.0
+        let cows = 6.0
+        
         //manually input desired data in dictionary form to be uploaded
-        let userData: [String: Any] = [
+        let userDataOne: [String: Any] = [
             "name": "Lucy",
-            "email": "lucy@gmail.com",
+            "email": "lucy@gmail.com"
         ]
+        let userData = userDataOne.merging(extraUserData) { (current, new) in new }
+        
+                
         
         //creates value at the position
         userRef.setValue(userData) { (error, _) in
