@@ -10,17 +10,20 @@ import FirebaseDatabase
 
 // all data associated with each user
 struct UserData: Identifiable {
-    let id: String
+    let id:String
+    let uuid:String
     let name: String
     let email: String
     let porkKg, beefLambKg, poultryKg, fishKg, eggsKg, cheeseKg, dairyKg, percentLocalFood, wasteKgPerWeek, recyclePercentage,
         clothingSpent, electronicsSpent, otherGoodsSpent, annualElectricityKWh,renewableEnergyPercentage,
         baseHousingEmissions, householdSize, distanceCarKm, carEmissionFactor, carpoolPercentage, distanceBusKm, distanceTrainKm, shortFlightHours, longFlightHours : Double
+    let itemList:[String:[String:Any]]
     
     
     // Decode from Firebase dictionary
-    init(id: String, data: [String: Any]) {
-        self.id = id
+    init(data: [String: Any]) {
+        self.id = data["id"] as? String ?? "NO ID"
+        self.uuid = data["uuid"] as? String ?? "No UUID"
         self.name = data["name"] as? String ?? "Unknown User"
         self.email = data["email"] as? String ?? "Unkown User"
         self.porkKg = data["porkKg"] as? Double ?? 1.0
@@ -47,6 +50,7 @@ struct UserData: Identifiable {
         self.distanceTrainKm = data["distanceTrainKm"] as? Double ?? 1.0
         self.shortFlightHours = data["shortFlightHouse"] as? Double ?? 1.0
         self.longFlightHours = data["longFlightHours"] as? Double ?? 1.0
+        self.itemList = data["itemList"] as? [String:[String:Any]] ?? ["testItemFailed":["testItemBooleanFailed":true, "testItemIntFailed":5]]
     }
     
     // Computed properites for each category
@@ -149,6 +153,17 @@ struct DataBaseTestView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
+            Button(action: {
+               addItemToUser(userID: savedUserUUID ?? "No ID", name: "eat_garbage", extraItemData: nil)
+            }) {
+                Text("Add Item to User itemList")
+                    .font(.headline)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
             
             //if savedUserUUID == nil, this button will not retrieve any data
             Button(action: {
@@ -168,7 +183,8 @@ struct DataBaseTestView: View {
             
             Button(action: {
                 Task {
-                    await getUserFromFirebase(id:"A15E56B5-6CAA-4CB2-91B4-F5F9D207F1A7")
+                    await getUserFromFirebase(id:"C957D23E-8F18-4280-A44E-F4246D2AD33A")
+                    savedUserUUID = "C957D23E-8F18-4280-A44E-F4246D2AD33A"
                 }
             }) {
                 Text("Get User from Firebase")
@@ -183,7 +199,7 @@ struct DataBaseTestView: View {
             // Displays
             if let user = decodedUserData {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Event ID: \(user.id)")
+                    Text("Event ID: \(user.uuid)")
                         .font(.subheadline)
                     Text("Name: \(user.name)")
                         .font(.headline)
@@ -211,11 +227,13 @@ struct DataBaseTestView: View {
         let userRef = usersRef.child(userUUID) //name of position in the database
      
         //manually input desired data in dictionary form to be uploaded
-        let userDataOne: [String: Any] = [
+        var userDataOne: [String: Any] = [
+            "uuid" : "\(userUUID)",
             "name": "Lucy",
-            "email": "lucy@gmail.com"
+            "email": "lucy@gmail.com",
+            "itemList":["testItem":["testItemBoolean":true, "testItemInt":37]]
         ]
-        let userData = userDataOne.merging(extraUserData) { (current, new) in new }
+        var userData = userDataOne.merging(extraUserData) { (current, new) in new }
         
         
         
@@ -230,18 +248,38 @@ struct DataBaseTestView: View {
         }
     }
     
+    public func addItemToUser(userID:String, name:String, extraItemData :[String:Any]?) {
+        let dataName = name
+        let itemsRef = Database.database().reference().child("users/\(userID)").child("itemList")
+        let itemRef = itemsRef.child(dataName) //name of position in the database
+     
+        //manually input desired data in dictionary form to be uploaded
+        let itemDataOne: [String: Any] = [
+            "name": "eat 5 whole garbage",
+            "isCompleted": false
+        ]
+        let itemData = itemDataOne.merging(extraItemData ?? ["defaultExtra":0]) { (current, new) in new }
+        
+        //creates value at the position
+        itemRef.setValue(itemData) { (error, _) in
+            if let error = error {
+                statusMessage = "Failed to write: \(error.localizedDescription)"
+            }
+        }
+    }
+    
     //TODO - add an id parameter so we can access the userdata without instant creation
     public func readUserFromFirebase() async {
         
         //checks for a saved id
-        guard let uuid = savedUserUUID else {
+        guard let uuID = savedUserUUID else {
             statusMessage = "No user UUID saved to read"
             decodedUserData = nil
             return //ends early if no id
         }
         
         //checks for specific id
-        guard let data = try? await Database.database().reference().child("users/\(uuid)").getData() else {
+        guard let data = try? await Database.database().reference().child("users/\(uuID)").getData() else {
             statusMessage = "Failed to fetch user data"
             decodedUserData = nil
             return //ends early if fails
@@ -255,7 +293,7 @@ struct DataBaseTestView: View {
         }
         
         //if search succeeds past all previous checks
-        let user = UserData(id: uuid, data: dictionary)
+        let user = UserData(data: dictionary)
         decodedUserData = user //retreives userdata and saves it to a state varaible
         statusMessage = "Successfully read event"
     }
@@ -283,7 +321,7 @@ struct DataBaseTestView: View {
         }
         
         //if search succeeds past all previous checks
-        let user = UserData(id: uuid, data: dictionary)
+        let user = UserData(data: dictionary)
         decodedUserData = user //retreives userdata and saves it to a state varaible
         statusMessage = "Successfully found event"
     }
@@ -291,5 +329,5 @@ struct DataBaseTestView: View {
 
 // Preview provider
 #Preview {
-    DataBaseTestView(decodedUserData: Binding.constant(UserData(id: "", data: ["name" : ""])), statusMessage: Binding.constant(""), savedUserUUID: Binding.constant(""))
+    DataBaseTestView(decodedUserData: Binding.constant(UserData(data: ["name" : ""])), statusMessage: Binding.constant(""), savedUserUUID: Binding.constant(""))
 }
