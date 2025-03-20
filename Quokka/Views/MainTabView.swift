@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MainTabView: View {
     
+    @StateObject var viewModel = MainTabViewViewModel()
+    
     //user we look at
     @Binding var decodedUserData: UserData?
     //displays action
@@ -25,11 +27,31 @@ struct MainTabView: View {
         
         
         TabView {
-            GoalsView()
-                .tabItem {
-                    Image(systemName:"person.circle.fill")
-                    Text("Goals")
-                }
+            
+            //goals
+            NavigationView {
+                GoalsView()
+                    .navigationTitle("Goals")
+                    .toolbar {
+                        Button(action: {
+                            
+                        }, label: {
+                            Image(systemName: "plus")
+                        })
+                    }
+                Button(action: {
+                    
+                }, label: {
+                    Image(systemName: "plus")
+                })
+            }
+            .tabItem {
+                Image(systemName:"person.circle.fill")
+                Text("Goals")
+                
+            }
+            
+            //checklist
             NavigationView {
                 List {
                     ForEach($items, id: \.name) {
@@ -52,14 +74,17 @@ struct MainTabView: View {
         
             .tabItem {
                 Image(systemName:"person.circle.fill")
-                Text("Daily")
+                Text("Checklist")
             }
             
-            MainProfileView()
+            //profile
+            MainProfileView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID: $savedUserUUID)
                 .tabItem {
                     Image(systemName:"person.circle.fill")
                     Text("Profile")
                 }
+            
+            //test
             DataBaseTestView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID:$savedUserUUID)
                 .tabItem {
                     Image(systemName:"person.circle.fill")
