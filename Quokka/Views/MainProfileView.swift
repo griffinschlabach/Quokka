@@ -26,6 +26,7 @@ struct MainProfileView: View {
                     .font(.subheadline)
                 Text("Long Flight Hours: \(user.longFlightHours)")
                 Text("Diet Footprint: \(String(format: "%.2f", user.dietFootprint))")
+                Text("Default Checklist Item: \(user.itemList["testItem"]?["testItemInt"] ?? 999)")
             }
             .padding()
             .background(Color.gray.opacity(0.1))
@@ -41,5 +42,5 @@ struct MainProfileView: View {
 }
 
 #Preview {
-    MainProfileView(decodedUserData: Binding.constant(UserData(id: "", data: ["name" : ""])), statusMessage: Binding.constant(""), savedUserUUID: Binding.constant(""))
+    MainProfileView(decodedUserData: Binding.constant(UserData(data: ["name" : ""])), statusMessage: Binding.constant(""), savedUserUUID: Binding.constant(""))
 }
