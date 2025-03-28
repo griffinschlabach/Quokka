@@ -10,6 +10,7 @@ import SwiftUI
 struct MainTabView: View {
     
     @StateObject var viewModel = MainTabViewViewModel()
+    @StateObject var checklistViewModel = ChecklistViewModel()
     
     //user we look at
     @Binding var decodedUserData: UserData?
@@ -18,13 +19,9 @@ struct MainTabView: View {
     //user id we look at
     @Binding var savedUserUUID: String?
     
-    @State private var items = [
-        Item(name: "go vegan", isCompleted: false),
-        Item(name: "reduce carbon footprint", isCompleted: false),
-        Item(name: "take public transport", isCompleted: false)]
+    @State var checklistItems: [ChecklistItem] = []
     
     var body: some View {
-        
         
         TabView {
             
@@ -54,24 +51,28 @@ struct MainTabView: View {
             //checklist
             NavigationView {
                 List {
-                    ForEach($items, id: \.name) {
-                        $item in
-                        ChecklistView(item: $item)
+                    ForEach($checklistViewModel.checklistItems) { $item in
+                        HStack {
+                            ChecklistView(item: $item)
+                            Text("\(item.isChecked)")
+                        }
                     }
                 }
                 .navigationTitle("Checklist")
                 .toolbar {
                     Button(action: {
-                        viewModel.showingNewItemView = true
+                        addNewItem()
                     }, label: {
                         Image(systemName: "plus")
                     })
+                    Button(action: {
+                        pullChecklistItems()
+                    }, label: {
+                        Image(systemName: "circle")
+                    })
+                    
                 }
-                .sheet(isPresented: $viewModel.showingNewItemView, content: {
-                    NewItemView(newItemPresented: $viewModel.showingNewItemView )
-                })
             }
-        
             .tabItem {
                 Image(systemName:"person.circle.fill")
                 Text("Checklist")
@@ -93,6 +94,25 @@ struct MainTabView: View {
             
         }
     }
+    
+
+    
+    // Add a new checklist item
+    private func addNewItem() {
+        //tbd
+    }
+    
+    // DOESNT WORK YET??
+    private func pushChecklistItems() {
+        decodedUserData?.itemList = checklistViewModel.checklistItems
+        //decodedUserData = checklistViewModel.userData.map {$0}
+    }
+    
+    private func pullChecklistItems() {
+        //checklistItems = decodedUserData?.itemList ?? []
+        checklistViewModel.checklistItems = decodedUserData?.itemList ?? []
+    }
+    
 }
 
 #Preview {
