@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct ChecklistView: View {
+    
+    @Binding var item: ChecklistItem
+    
     var body: some View {
-        Text("Awesome Checklist View!")
+        
+        HStack {
+            Text(item.name)
+            Spacer()
+            Button(action: {
+                item.isChecked.toggle()
+            }) {
+                Image(systemName: item.isChecked ? "checkmark.circle.fill" : "circle")
+                    .foregroundColor(.blue)
+                    .font(.system(size: 22))
+            }
+            
+        }
     }
 }
 
 #Preview {
-    ChecklistView()
+    ChecklistView(item: Binding.constant(ChecklistItem()))
 }

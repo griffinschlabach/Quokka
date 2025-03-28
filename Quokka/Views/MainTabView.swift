@@ -9,6 +9,9 @@ import SwiftUI
 
 struct MainTabView: View {
     
+    @StateObject var viewModel = MainTabViewViewModel()
+    @StateObject var checklistViewModel = ChecklistViewModel()
+    
     //user we look at
     @Binding var decodedUserData: UserData?
     //displays action
@@ -16,24 +19,73 @@ struct MainTabView: View {
     //user id we look at
     @Binding var savedUserUUID: String?
     
+    @State var checklistItems: [ChecklistItem] = []
     
     var body: some View {
+        
         TabView {
-            GoalsView()
-                .tabItem {
-                    Image(systemName:"person.circle.fill")
-                    Text("Goals")
+            
+            //goals
+            NavigationView {
+                GoalsView()
+                    .navigationTitle("Goals")
+                    .toolbar {
+                        Button(action: {
+                            
+                        }, label: {
+                            Image(systemName: "plus")
+                        })
+                    }
+                Button(action: {
+                    
+                }, label: {
+                    Image(systemName: "plus")
+                })
+            }
+            .tabItem {
+                Image(systemName:"person.circle.fill")
+                Text("Goals")
+                
+            }
+            
+            //checklist
+            NavigationView {
+                List {
+                    ForEach($checklistViewModel.checklistItems) { $item in
+                        HStack {
+                            ChecklistView(item: $item)
+                            Text("\(item.isChecked)")
+                        }
+                    }
                 }
-            ChecklistView()
-                .tabItem {
-                    Image(systemName:"person.circle.fill")
-                    Text("Daily")
+                .navigationTitle("Checklist")
+                .toolbar {
+                    Button(action: {
+                        addNewItem()
+                    }, label: {
+                        Image(systemName: "plus")
+                    })
+                    Button(action: {
+                        pullChecklistItems()
+                    }, label: {
+                        Image(systemName: "circle")
+                    })
+                    
                 }
-            MainProfileView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID:$savedUserUUID)
+            }
+            .tabItem {
+                Image(systemName:"person.circle.fill")
+                Text("Checklist")
+            }
+            
+            //profile
+            MainProfileView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID: $savedUserUUID)
                 .tabItem {
                     Image(systemName:"person.circle.fill")
                     Text("Profile")
                 }
+            
+            //test
             DataBaseTestView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID:$savedUserUUID)
                 .tabItem {
                     Image(systemName:"person.circle.fill")
@@ -42,8 +94,27 @@ struct MainTabView: View {
             
         }
     }
+    
+
+    
+    // Add a new checklist item
+    private func addNewItem() {
+        //tbd
+    }
+    
+    // DOESNT WORK YET??
+    private func pushChecklistItems() {
+        decodedUserData?.itemList = checklistViewModel.checklistItems
+        //decodedUserData = checklistViewModel.userData.map {$0}
+    }
+    
+    private func pullChecklistItems() {
+        //checklistItems = decodedUserData?.itemList ?? []
+        checklistViewModel.checklistItems = decodedUserData?.itemList ?? []
+    }
+    
 }
 
 #Preview {
-    MainTabView(decodedUserData: Binding.constant(UserData(id: "", data: ["name" : ""])), statusMessage: Binding.constant(""), savedUserUUID: Binding.constant(""))
+    MainTabView(decodedUserData: Binding.constant(UserData(data: ["name" : ""])), statusMessage: Binding.constant(""), savedUserUUID: Binding.constant(""))
 }
