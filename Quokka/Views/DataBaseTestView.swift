@@ -9,7 +9,6 @@ import SwiftUI
 import FirebaseDatabase
 
 
-
 //view displayed in TabView as TEST TEST
 struct DataBaseTestView: View {
     //user we look at
