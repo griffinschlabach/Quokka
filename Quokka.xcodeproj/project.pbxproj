@@ -36,6 +36,19 @@
 		A3ED2BD02D91CAD6003B0C4A /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ED2BCF2D91CAD6003B0C4A /* ChecklistItem.swift */; };
 		A3ED2BD22D948145003B0C4A /* ChecklistItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ED2BD12D948145003B0C4A /* ChecklistItemViewModel.swift */; };
 		FC3D25592D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3D25582D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift */; };
+		FCFFA4402D97113F0004C662 /* Air Travel View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA4322D97113F0004C662 /* Air Travel View.swift */; };
+		FCFFA4412D97113F0004C662 /* Animal Product Question View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA4332D97113F0004C662 /* Animal Product Question View.swift */; };
+		FCFFA4422D97113F0004C662 /* Carpool View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA4342D97113F0004C662 /* Carpool View.swift */; };
+		FCFFA4432D97113F0004C662 /* Consumption View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA4352D97113F0004C662 /* Consumption View.swift */; };
+		FCFFA4442D97113F0004C662 /* Electricity View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA4362D97113F0004C662 /* Electricity View.swift */; };
+		FCFFA4452D97113F0004C662 /* Food Locality View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA4372D97113F0004C662 /* Food Locality View.swift */; };
+		FCFFA4462D97113F0004C662 /* Housing Size View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA4382D97113F0004C662 /* Housing Size View.swift */; };
+		FCFFA4472D97113F0004C662 /* Housing View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA4392D97113F0004C662 /* Housing View.swift */; };
+		FCFFA4482D97113F0004C662 /* Private Transport View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA43A2D97113F0004C662 /* Private Transport View.swift */; };
+		FCFFA4492D97113F0004C662 /* Public Transport View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA43B2D97113F0004C662 /* Public Transport View.swift */; };
+		FCFFA44A2D97113F0004C662 /* Quiz Navigation View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA43C2D97113F0004C662 /* Quiz Navigation View.swift */; };
+		FCFFA44B2D97113F0004C662 /* Recycling View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA43D2D97113F0004C662 /* Recycling View.swift */; };
+		FCFFA44C2D97113F0004C662 /* Waste Production View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA43E2D97113F0004C662 /* Waste Production View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +71,19 @@
 		A3ED2BCF2D91CAD6003B0C4A /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 		A3ED2BD12D948145003B0C4A /* ChecklistItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemViewModel.swift; sourceTree = "<group>"; };
 		FC3D25582D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonFootprintCalculator.swift; sourceTree = "<group>"; };
+		FCFFA4322D97113F0004C662 /* Air Travel View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Air Travel View.swift"; sourceTree = "<group>"; };
+		FCFFA4332D97113F0004C662 /* Animal Product Question View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animal Product Question View.swift"; sourceTree = "<group>"; };
+		FCFFA4342D97113F0004C662 /* Carpool View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Carpool View.swift"; sourceTree = "<group>"; };
+		FCFFA4352D97113F0004C662 /* Consumption View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Consumption View.swift"; sourceTree = "<group>"; };
+		FCFFA4362D97113F0004C662 /* Electricity View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Electricity View.swift"; sourceTree = "<group>"; };
+		FCFFA4372D97113F0004C662 /* Food Locality View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Food Locality View.swift"; sourceTree = "<group>"; };
+		FCFFA4382D97113F0004C662 /* Housing Size View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Housing Size View.swift"; sourceTree = "<group>"; };
+		FCFFA4392D97113F0004C662 /* Housing View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Housing View.swift"; sourceTree = "<group>"; };
+		FCFFA43A2D97113F0004C662 /* Private Transport View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Private Transport View.swift"; sourceTree = "<group>"; };
+		FCFFA43B2D97113F0004C662 /* Public Transport View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Public Transport View.swift"; sourceTree = "<group>"; };
+		FCFFA43C2D97113F0004C662 /* Quiz Navigation View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Quiz Navigation View.swift"; sourceTree = "<group>"; };
+		FCFFA43D2D97113F0004C662 /* Recycling View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Recycling View.swift"; sourceTree = "<group>"; };
+		FCFFA43E2D97113F0004C662 /* Waste Production View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Waste Production View.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +149,7 @@
 		A351CD802D6CEEBE00C4DBF2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FCFFA43F2D97113F0004C662 /* Quiz Views */,
 				A351CD742D6CE87A00C4DBF2 /* ContentView.swift */,
 				A351CD8C2D6E45E500C4DBF2 /* MainTabView.swift */,
 				A351CD862D6E43AD00C4DBF2 /* ChecklistView.swift */,
@@ -153,6 +180,26 @@
 				A3ED2BCD2D91CA68003B0C4A /* UserData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FCFFA43F2D97113F0004C662 /* Quiz Views */ = {
+			isa = PBXGroup;
+			children = (
+				FCFFA4322D97113F0004C662 /* Air Travel View.swift */,
+				FCFFA4332D97113F0004C662 /* Animal Product Question View.swift */,
+				FCFFA4342D97113F0004C662 /* Carpool View.swift */,
+				FCFFA4352D97113F0004C662 /* Consumption View.swift */,
+				FCFFA4362D97113F0004C662 /* Electricity View.swift */,
+				FCFFA4372D97113F0004C662 /* Food Locality View.swift */,
+				FCFFA4382D97113F0004C662 /* Housing Size View.swift */,
+				FCFFA4392D97113F0004C662 /* Housing View.swift */,
+				FCFFA43A2D97113F0004C662 /* Private Transport View.swift */,
+				FCFFA43B2D97113F0004C662 /* Public Transport View.swift */,
+				FCFFA43C2D97113F0004C662 /* Quiz Navigation View.swift */,
+				FCFFA43D2D97113F0004C662 /* Recycling View.swift */,
+				FCFFA43E2D97113F0004C662 /* Waste Production View.swift */,
+			);
+			path = "Quiz Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,19 +291,32 @@
 			files = (
 				A3ED2BCE2D91CA68003B0C4A /* UserData.swift in Sources */,
 				60668B7C2D7B6227001E72B8 /* MainTabViewViewModel.swift in Sources */,
+				FCFFA4482D97113F0004C662 /* Private Transport View.swift in Sources */,
 				A351CD752D6CE87A00C4DBF2 /* ContentView.swift in Sources */,
 				A351CD872D6E43AD00C4DBF2 /* ChecklistView.swift in Sources */,
 				A3ED2BD22D948145003B0C4A /* ChecklistItemViewModel.swift in Sources */,
+				FCFFA4402D97113F0004C662 /* Air Travel View.swift in Sources */,
+				FCFFA4472D97113F0004C662 /* Housing View.swift in Sources */,
+				FCFFA4412D97113F0004C662 /* Animal Product Question View.swift in Sources */,
 				A351CD732D6CE87A00C4DBF2 /* QuokkaApp.swift in Sources */,
 				A351CD892D6E43BB00C4DBF2 /* GoalsView.swift in Sources */,
 				606AC3D22D7A2C7C001A6083 /* NewItemView.swift in Sources */,
+				FCFFA4422D97113F0004C662 /* Carpool View.swift in Sources */,
+				FCFFA4462D97113F0004C662 /* Housing Size View.swift in Sources */,
 				A351CD8D2D6E45E500C4DBF2 /* MainTabView.swift in Sources */,
+				FCFFA4432D97113F0004C662 /* Consumption View.swift in Sources */,
+				FCFFA44C2D97113F0004C662 /* Waste Production View.swift in Sources */,
 				60668B7A2D7B5F79001E72B8 /* NewItemViewViewModel.swift in Sources */,
+				FCFFA44A2D97113F0004C662 /* Quiz Navigation View.swift in Sources */,
+				FCFFA44B2D97113F0004C662 /* Recycling View.swift in Sources */,
 				A3ED2BD02D91CAD6003B0C4A /* ChecklistItem.swift in Sources */,
 				A351CD832D6CEEE100C4DBF2 /* Constants.swift in Sources */,
+				FCFFA4452D97113F0004C662 /* Food Locality View.swift in Sources */,
 				A351CDB02D7A16E100C4DBF2 /* DataBaseTestView.swift in Sources */,
+				FCFFA4442D97113F0004C662 /* Electricity View.swift in Sources */,
 				FC3D25592D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift in Sources */,
 				A351CD8B2D6E43CA00C4DBF2 /* MainProfileView.swift in Sources */,
+				FCFFA4492D97113F0004C662 /* Public Transport View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
