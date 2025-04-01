@@ -169,4 +169,40 @@ class UserData: ObservableObject, Identifiable {
         return item
     }
     
+    public func toDictionary() -> [String: Any] {
+            return [
+                "id": id,
+                "uuid": uuid,
+                "name": name,
+                "email": email,
+                "porkKg": porkKg,
+                "beefLambKg": beefLambKg,
+                "poultryKg": poultryKg,
+                "fishKg": fishKg,
+                "eggsKg": eggsKg,
+                "cheeseKg": cheeseKg,
+                "dairyKg": dairyKg,
+                "percentLocalFood": percentLocalFood,
+                "wasteKgPerWeek": wasteKgPerWeek,
+                "recyclePercentage": recyclePercentage,
+                "clothingSpent": clothingSpent,
+                "electronicsSpent": electronicsSpent,
+                "otherGoodsSpent": otherGoodsSpent,
+                "annualElectricityKWh": annualElectricityKWh,
+                "renewableEnergyPercentage": renewableEnergyPercentage,
+                "baseHousingEmissions": baseHousingEmissions,
+                "householdSize": householdSize,
+                "distanceCarKm": distanceCarKm,
+                "carEmissionFactor": carEmissionFactor,
+                "carpoolPercentage": carpoolPercentage,
+                "distanceBusKm": distanceBusKm,
+                "distanceTrainKm": distanceTrainKm,
+                "shortFlightHours": shortFlightHours,
+                "longFlightHours": longFlightHours,
+                "itemList": itemList.reduce(into: [String: Any]()) { result, item in
+                    result[item.id] = item.toDictionary()
+                }
+            ]
+        }
+    
 }

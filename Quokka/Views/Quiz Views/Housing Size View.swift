@@ -33,5 +33,5 @@ struct Housing_Size_View: View {
 }
 
 #Preview {
-    Housing_Size_View(userStart: Binding.constant(UserData(id: "default", data: ["hello": "poop"])))
+    Housing_Size_View(userStart: Binding.constant(UserData(data: ["hello": "poop"])))
 }

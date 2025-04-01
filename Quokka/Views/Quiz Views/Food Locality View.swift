@@ -33,5 +33,5 @@ struct Food_Locality_View: View {
 }
 
 #Preview {
-    Food_Locality_View(userStart: Binding.constant(UserData(id: "default", data: ["hello": "poop"])))
+    Food_Locality_View(userStart: Binding.constant(UserData(data: ["hello": "poop"])))
 }

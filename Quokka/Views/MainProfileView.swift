@@ -34,8 +34,7 @@ struct MainProfileView: View {
             .cornerRadius(8)
         }
         else {
-            Text(statusMessage)
-                .font(Constants.mainfont)
+            QuizView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID: $savedUserUUID)
         }
         
     }
