@@ -11,6 +11,12 @@ struct QuizView: View {
     // Track the current page index
     @State private var currentPage = 0
     @State var userStart: UserData = UserData(data: ["hello": "poop"])
+    //user we look at
+    @Binding var decodedUserData: UserData?
+    //displays action
+    @Binding var statusMessage: String
+    //user id we look at
+    @Binding var savedUserUUID: String?
 
     // Computed property for individual quiz views
     var quizPages: [AnyView] {
@@ -26,7 +32,8 @@ struct QuizView: View {
             AnyView(Private_Transport_View(userStart: $userStart)),
             AnyView(Public_Transport_View(userStart: $userStart)),
             AnyView(Carpool_View(userStart: $userStart)),
-            AnyView(Air_Travel_View(userStart: $userStart))
+            AnyView(Air_Travel_View(userStart: $userStart)),
+            AnyView(SaveView(userStart: $userStart, decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID: $savedUserUUID))
         ]
     }
 
@@ -73,7 +80,7 @@ struct QuizView: View {
 
 struct QuizView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizView()
+        QuizView(decodedUserData: Binding.constant(UserData(data: ["name" : ""])), statusMessage: Binding.constant(""), savedUserUUID: Binding.constant(""))
     }
 }
 
