@@ -26,5 +26,5 @@ struct Electricity_View: View {
 }
 
 #Preview {
-    Electricity_View(userStart: Binding.constant(UserData(id: "default", data: ["hello": "poop"])))
+    Electricity_View(userStart: Binding.constant(UserData(data: ["hello": "poop"])))
 }

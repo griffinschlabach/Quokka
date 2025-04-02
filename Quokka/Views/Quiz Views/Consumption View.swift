@@ -49,5 +49,5 @@ struct Consumption_View: View {
 }
 
 #Preview {
-    Consumption_View(userStart: Binding.constant(UserData(id: "default", data: ["hello": "poop"])))
+    Consumption_View(userStart: Binding.constant(UserData(data: ["hello": "poop"])))
 }

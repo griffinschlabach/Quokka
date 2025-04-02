@@ -10,7 +10,7 @@ import SwiftUI
 struct QuizView: View {
     // Track the current page index
     @State private var currentPage = 0
-    @State var userStart: UserData = UserData(id: "default", data: ["hello": "poop"])
+    @State var userStart: UserData = UserData(data: ["hello": "poop"])
 
     // Computed property for individual quiz views
     var quizPages: [AnyView] {

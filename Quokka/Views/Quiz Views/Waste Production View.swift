@@ -32,5 +32,5 @@ struct Waste_Production_View: View {
 }
 
 #Preview {
-    Waste_Production_View(userStart: Binding.constant(UserData(id: "default", data: ["hello": "poop"])))
+    Waste_Production_View(userStart: Binding.constant(UserData(data: ["hello": "poop"])))
 }

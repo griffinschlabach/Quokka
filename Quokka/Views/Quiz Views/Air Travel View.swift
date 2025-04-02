@@ -54,5 +54,5 @@ struct Air_Travel_View: View {
 }
 
 #Preview {
-    Air_Travel_View(userStart: Binding.constant(UserData(id: "default", data: ["hello": "poop"])))
+    Air_Travel_View(userStart: Binding.constant(UserData(data: ["hello": "poop"])))
 }

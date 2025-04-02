@@ -9,8 +9,8 @@ import Foundation
 
 // all data associated with each user
 class UserData: ObservableObject, Identifiable {
-    let id:String
-    let uuid:String
+    var id:String
+    var uuid:String
     var name: String
     var email: String
     var porkKg, beefLambKg, poultryKg, fishKg, eggsKg, cheeseKg, dairyKg, percentLocalFood, wasteKgPerWeek, recyclePercentage,

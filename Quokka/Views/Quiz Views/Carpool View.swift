@@ -33,5 +33,5 @@ struct Carpool_View: View {
 }
 
 #Preview {
-    Carpool_View(userStart: Binding.constant(UserData(id: "default", data: ["hello": "poop"])))
+    Carpool_View(userStart: Binding.constant(UserData(data: ["hello": "poop"])))
 }

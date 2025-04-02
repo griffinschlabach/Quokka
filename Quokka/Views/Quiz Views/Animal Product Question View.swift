@@ -120,5 +120,5 @@ struct Animal_Product_Question_View: View {
 }
 
 #Preview {
-    Animal_Product_Question_View(userStart: Binding.constant(UserData(id: "default", data: ["hello": "poop"])))
+    Animal_Product_Question_View(userStart: Binding.constant(UserData(data: ["hello": "poop"])))
 }

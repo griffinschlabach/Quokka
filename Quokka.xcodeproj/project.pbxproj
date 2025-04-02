@@ -49,6 +49,8 @@
 		FCFFA44A2D97113F0004C662 /* Quiz Navigation View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA43C2D97113F0004C662 /* Quiz Navigation View.swift */; };
 		FCFFA44B2D97113F0004C662 /* Recycling View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA43D2D97113F0004C662 /* Recycling View.swift */; };
 		FCFFA44C2D97113F0004C662 /* Waste Production View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA43E2D97113F0004C662 /* Waste Production View.swift */; };
+		FCFFA44E2D9C60500004C662 /* Dynamic Land Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA44D2D9C60500004C662 /* Dynamic Land Grid.swift */; };
+		FCFFA4502D9C61AE0004C662 /* Land Grid View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA44F2D9C61AE0004C662 /* Land Grid View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,8 @@
 		FCFFA43C2D97113F0004C662 /* Quiz Navigation View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Quiz Navigation View.swift"; sourceTree = "<group>"; };
 		FCFFA43D2D97113F0004C662 /* Recycling View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Recycling View.swift"; sourceTree = "<group>"; };
 		FCFFA43E2D97113F0004C662 /* Waste Production View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Waste Production View.swift"; sourceTree = "<group>"; };
+		FCFFA44D2D9C60500004C662 /* Dynamic Land Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dynamic Land Grid.swift"; sourceTree = "<group>"; };
+		FCFFA44F2D9C61AE0004C662 /* Land Grid View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Land Grid View.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +161,7 @@
 				A351CD882D6E43BA00C4DBF2 /* GoalsView.swift */,
 				A351CD8A2D6E43CA00C4DBF2 /* MainProfileView.swift */,
 				A351CDAF2D7A16E100C4DBF2 /* DataBaseTestView.swift */,
+				FCFFA44F2D9C61AE0004C662 /* Land Grid View.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 				60668B792D7B5F79001E72B8 /* NewItemViewViewModel.swift */,
 				A351CD822D6CEEE100C4DBF2 /* Constants.swift */,
 				A3ED2BD12D948145003B0C4A /* ChecklistItemViewModel.swift */,
+				FCFFA44D2D9C60500004C662 /* Dynamic Land Grid.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -292,6 +298,7 @@
 				A3ED2BCE2D91CA68003B0C4A /* UserData.swift in Sources */,
 				60668B7C2D7B6227001E72B8 /* MainTabViewViewModel.swift in Sources */,
 				FCFFA4482D97113F0004C662 /* Private Transport View.swift in Sources */,
+				FCFFA4502D9C61AE0004C662 /* Land Grid View.swift in Sources */,
 				A351CD752D6CE87A00C4DBF2 /* ContentView.swift in Sources */,
 				A351CD872D6E43AD00C4DBF2 /* ChecklistView.swift in Sources */,
 				A3ED2BD22D948145003B0C4A /* ChecklistItemViewModel.swift in Sources */,
@@ -316,6 +323,7 @@
 				FCFFA4442D97113F0004C662 /* Electricity View.swift in Sources */,
 				FC3D25592D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift in Sources */,
 				A351CD8B2D6E43CA00C4DBF2 /* MainProfileView.swift in Sources */,
+				FCFFA44E2D9C60500004C662 /* Dynamic Land Grid.swift in Sources */,
 				FCFFA4492D97113F0004C662 /* Public Transport View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -32,5 +32,5 @@ struct Recycling_View: View {
 }
 
 #Preview {
-    Recycling_View(userStart: Binding.constant(UserData(id: "default", data: ["hello": "poop"])))
+    Recycling_View(userStart: Binding.constant(UserData(data: ["hello": "poop"])))
 }

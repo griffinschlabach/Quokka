@@ -54,5 +54,5 @@ struct Public_Transport_View: View {
 }
 
 #Preview {
-    Public_Transport_View(userStart: Binding.constant(UserData(id: "default", data: ["hello": "poop"])))
+    Public_Transport_View(userStart: Binding.constant(UserData(data: ["hello": "poop"])))
 }
