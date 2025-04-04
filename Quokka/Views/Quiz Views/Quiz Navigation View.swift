@@ -59,7 +59,7 @@ struct QuizView: View {
                     Image(systemName: "arrow.left")
                         .font(.title)
                 }
-                .padding()
+                //.padding()
 
                 Spacer()
 
@@ -71,7 +71,7 @@ struct QuizView: View {
                     Image(systemName: "arrow.right")
                         .font(.title)
                 }
-                .padding()
+                //.padding()
             }
             .padding(.horizontal)
         }
