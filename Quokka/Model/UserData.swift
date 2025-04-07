@@ -16,6 +16,7 @@ class UserData: ObservableObject, Identifiable {
     var porkKg, beefLambKg, poultryKg, fishKg, eggsKg, cheeseKg, dairyKg, percentLocalFood, wasteKgPerWeek, recyclePercentage,
         clothingSpent, electronicsSpent, otherGoodsSpent, annualElectricityKWh,renewableEnergyPercentage,
         baseHousingEmissions, householdSize, distanceCarKm, carEmissionFactor, carpoolPercentage, distanceBusKm, distanceTrainKm, shortFlightHours, longFlightHours : Double
+    var landSaved : Double
     @Published var itemList:[ChecklistItem]
     
     
@@ -49,6 +50,7 @@ class UserData: ObservableObject, Identifiable {
         self.distanceTrainKm = data["distanceTrainKm"] as? Double ?? 1.0
         self.shortFlightHours = data["shortFlightHouse"] as? Double ?? 1.0
         self.longFlightHours = data["longFlightHours"] as? Double ?? 1.0
+        self.landSaved = data["landSaved"] as? Double ?? 0.0
         
         
         self.itemList = []
@@ -201,7 +203,8 @@ class UserData: ObservableObject, Identifiable {
                 "longFlightHours": longFlightHours,
                 "itemList": itemList.reduce(into: [String: Any]()) { result, item in
                     result[item.id] = item.toDictionary()
-                }
+                },
+                "landSaved" :landSaved
             ]
         }
     
