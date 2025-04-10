@@ -43,6 +43,8 @@ struct CarbonFootprintCalculator {
         "shortFlightHours": 10.0,
         "longFlightHours": 20.0,
         
+        "landSaved":10.0
+        
     ]
     
 }

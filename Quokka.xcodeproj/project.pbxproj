@@ -36,6 +36,7 @@
 		A3ED2BCE2D91CA68003B0C4A /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ED2BCD2D91CA68003B0C4A /* UserData.swift */; };
 		A3ED2BD02D91CAD6003B0C4A /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ED2BCF2D91CAD6003B0C4A /* ChecklistItem.swift */; };
 		A3ED2BD22D948145003B0C4A /* ChecklistItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ED2BD12D948145003B0C4A /* ChecklistItemViewModel.swift */; };
+		A3FDB4392DA5ABB4006652F2 /* PersonalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDB4382DA5ABB4006652F2 /* PersonalView.swift */; };
 		FC3D25592D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3D25582D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift */; };
 		FCFFA4402D97113F0004C662 /* Air Travel View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA4322D97113F0004C662 /* Air Travel View.swift */; };
 		FCFFA4412D97113F0004C662 /* Animal Product Question View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA4332D97113F0004C662 /* Animal Product Question View.swift */; };
@@ -74,6 +75,7 @@
 		A3ED2BCD2D91CA68003B0C4A /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		A3ED2BCF2D91CAD6003B0C4A /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 		A3ED2BD12D948145003B0C4A /* ChecklistItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemViewModel.swift; sourceTree = "<group>"; };
+		A3FDB4382DA5ABB4006652F2 /* PersonalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalView.swift; sourceTree = "<group>"; };
 		FC3D25582D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonFootprintCalculator.swift; sourceTree = "<group>"; };
 		FCFFA4322D97113F0004C662 /* Air Travel View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Air Travel View.swift"; sourceTree = "<group>"; };
 		FCFFA4332D97113F0004C662 /* Animal Product Question View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animal Product Question View.swift"; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 		FCFFA43F2D97113F0004C662 /* Quiz Views */ = {
 			isa = PBXGroup;
 			children = (
+				A3FDB4382DA5ABB4006652F2 /* PersonalView.swift */,
 				FCFFA4322D97113F0004C662 /* Air Travel View.swift */,
 				FCFFA4332D97113F0004C662 /* Animal Product Question View.swift */,
 				FCFFA4342D97113F0004C662 /* Carpool View.swift */,
@@ -310,6 +313,7 @@
 				FCFFA4412D97113F0004C662 /* Animal Product Question View.swift in Sources */,
 				A351CD732D6CE87A00C4DBF2 /* QuokkaApp.swift in Sources */,
 				A351CD892D6E43BB00C4DBF2 /* GoalsView.swift in Sources */,
+				A3FDB4392DA5ABB4006652F2 /* PersonalView.swift in Sources */,
 				606AC3D22D7A2C7C001A6083 /* NewItemView.swift in Sources */,
 				FCFFA4422D97113F0004C662 /* Carpool View.swift in Sources */,
 				FCFFA4462D97113F0004C662 /* Housing Size View.swift in Sources */,

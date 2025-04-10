@@ -29,8 +29,8 @@ struct MainProfileView: View {
                     .font(.subheadline)
                 Text("Long Flight Hours: \(user.longFlightHours)")
                 Text("Diet Footprint: \(String(format: "%.2f", user.dietFootprint))")
-                Text("Default Checklist Item name: \(user.itemList[0].name)")
-                Text("Default Checklist Item checked: \(user.itemList[0].isChecked)")
+                //Text("Default Checklist Item name: \(user.itemList[0].name)")
+                //Text("Default Checklist Item checked: \(user.itemList[0].isChecked)")
             }
             .padding()
             .background(Color.gray.opacity(0.1))
@@ -38,21 +38,13 @@ struct MainProfileView: View {
         }
         else {
             VStack {
-                HStack{
-                    Text("Login Manually: ")
-                    TextField("UUID", text: $uuidField)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.default)
-                        .padding(30)
-                        .onSubmit {
-                            Task {
-                                await getUserFromFirebase(id:uuidField)
-                                savedUserUUID = uuidField
-                            }
-                        }
-                }
-                .padding(.horizontal, 10)
                 QuizView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID: $savedUserUUID)
+                    .onChange(of: savedUserUUID) { newUUID in
+                        guard let uuid = newUUID else { return }
+                        Task {
+                            await getUserFromFirebase(id: uuid)
+                        }
+                    }
             }
         }
         
@@ -87,10 +79,10 @@ struct MainProfileView: View {
         statusMessage = "Successfully found event"
     }
 }
-    
+
 
 
 #Preview {
     MainProfileView(decodedUserData: Binding.constant(UserData(data: ["name" : ""])), statusMessage: Binding.constant(""), savedUserUUID: Binding.constant(""),
-        uuidField:"")
+                    uuidField:"")
 }

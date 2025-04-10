@@ -23,7 +23,7 @@ struct SaveView: View {
         Button(action: {
             Task {
                 writeUserToFirebase(extraUserData: userStart.toDictionary())
-                addItemToUser(userID: savedUserUUID ?? "", data: ChecklistItem(name:"poop"))
+                savedUserUUID = userStart.uuid
             }
         }) {
             Text("SAVE USER")
@@ -43,12 +43,12 @@ struct SaveView: View {
         let userRef = usersRef.child(userUUID) //name of position in the database
      
         //manually input desired data in dictionary form to be uploaded
-        var userDataOne: [String: Any] = [
+        var userDataTwo: [String: Any] = [
             "uuid" : "\(userUUID)",
             "name": "Lucy",
             "email": "lucy@gmail.com",
         ]
-        var userData = userDataOne.merging(extraUserData) { (current, new) in new }
+        var userData = extraUserData.merging(userDataTwo) { (current, new) in new }
         
         
         
@@ -59,22 +59,6 @@ struct SaveView: View {
             } else { //if there's no error it saves the UUID
                 savedUserUUID = userUUID //saves the id upon creation of the user for later use
                 statusMessage = "Wrote user with UUID: \(userUUID)"
-            }
-        }
-    }
-    
-    public func addItemToUser(userID:String, data:ChecklistItem) {
-        let itemsRef = Database.database().reference().child("users/\(userID)").child("itemList")
-        let itemRef = itemsRef.child(data.name) //name of position in the database
-     
-        //converts checklist item properties to String:Any Form
-        
-        var formatted = data.toDictionary()
-        
-        //creates value at the position
-        itemRef.setValue(formatted) { (error, _) in
-            if let error = error {
-                statusMessage = "Failed to write: \(error.localizedDescription)"
             }
         }
     }
