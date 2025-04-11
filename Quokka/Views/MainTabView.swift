@@ -26,22 +26,18 @@ struct MainTabView: View {
         TabView {
             
             //goals
-            NavigationView {
+            VStack {
+                
+                Text("Goals")
+                    .font(Constants.titlefont)
+                    .padding(.top, 20)
+                
+                Spacer()
                 GoalsView()
-                    .navigationTitle("Goals")
-                    .toolbar {
-                        Button(action: {
-                            
-                        }, label: {
-                            Image(systemName: "plus")
-                        })
-                    }
-                Button(action: {
-                    
-                }, label: {
-                    Image(systemName: "plus")
-                })
+                
+                Spacer()
             }
+            
             .tabItem {
                 Image(systemName:"person.circle.fill")
                 Text("Goals")
@@ -49,34 +45,34 @@ struct MainTabView: View {
             }
             
             //checklist
-//            NavigationView {
-//                List {
-//                    ForEach($checklistViewModel.checklistItems) { $item in
-//                        HStack {
-//                            ChecklistView(item: $item)
-//                            Text("\(item.isChecked)")
-//                        }
-//                    }
-//                }
-//                .navigationTitle("Checklist")
-//                .toolbar {
-//                    Button(action: {
-//                        addNewItem()
-//                    }, label: {
-//                        Image(systemName: "plus")
-//                    })
-//                    Button(action: {
-//                        pullChecklistItems()
-//                    }, label: {
-//                        Image(systemName: "circle")
-//                    })
-//                    
-//                }
-//            }
-//            .tabItem {
-//                Image(systemName:"person.circle.fill")
-//                Text("Checklist")
-//            }
+            //            NavigationView {
+            //                List {
+            //                    ForEach($checklistViewModel.checklistItems) { $item in
+            //                        HStack {
+            //                            ChecklistView(item: $item)
+            //                            Text("\(item.isChecked)")
+            //                        }
+            //                    }
+            //                }
+            //                .navigationTitle("Checklist")
+            //                .toolbar {
+            //                    Button(action: {
+            //                        addNewItem()
+            //                    }, label: {
+            //                        Image(systemName: "plus")
+            //                    })
+            //                    Button(action: {
+            //                        pullChecklistItems()
+            //                    }, label: {
+            //                        Image(systemName: "circle")
+            //                    })
+            //
+            //                }
+            //            }
+            //            .tabItem {
+            //                Image(systemName:"person.circle.fill")
+            //                Text("Checklist")
+            //            }
             
             //profile
             MainProfileView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID: $savedUserUUID)
@@ -95,7 +91,7 @@ struct MainTabView: View {
         }
     }
     
-
+    
     
     // Add a new checklist item
     private func addNewItem() {

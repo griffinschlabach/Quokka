@@ -11,7 +11,8 @@ import SwiftUI
 
 struct Constants{
     static let mainfont: Font = Font(UIFont(name: "Gill Sans", size: 20.0) ?? UIFont.systemFont(ofSize: 5.0))
-    
+    static let titlefont: Font = Font(UIFont(name: "Gill Sans", size: 50.0) ?? UIFont.systemFont(ofSize: 5.0))
+
 }
 
 extension Color {
