@@ -37,9 +37,8 @@
 		A3ED2BD02D91CAD6003B0C4A /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ED2BCF2D91CAD6003B0C4A /* ChecklistItem.swift */; };
 		A3ED2BD22D948145003B0C4A /* ChecklistItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ED2BD12D948145003B0C4A /* ChecklistItemViewModel.swift */; };
 		A3FDB4392DA5ABB4006652F2 /* PersonalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDB4382DA5ABB4006652F2 /* PersonalView.swift */; };
-		A3FDB43D2DA98BF7006652F2 /* Animal Product Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDB43A2DA98BF7006652F2 /* Animal Product Calculator.swift */; };
 		A3FDB43E2DA98BF7006652F2 /* Animal Product Daily Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDB43B2DA98BF7006652F2 /* Animal Product Daily Calculator.swift */; };
-		A3FDB43F2DA98BF7006652F2 /* Animal Product Land Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDB43C2DA98BF7006652F2 /* Animal Product Land Calculator.swift */; };
+		FC1459892DA98D3800BF805D /* Animal Product Daily Quiz View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1459882DA98D3800BF805D /* Animal Product Daily Quiz View.swift */; };
 		FC3D25592D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3D25582D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift */; };
 		FCFFA4402D97113F0004C662 /* Air Travel View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA4322D97113F0004C662 /* Air Travel View.swift */; };
 		FCFFA4412D97113F0004C662 /* Animal Product Question View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFFA4332D97113F0004C662 /* Animal Product Question View.swift */; };
@@ -79,9 +78,8 @@
 		A3ED2BCF2D91CAD6003B0C4A /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 		A3ED2BD12D948145003B0C4A /* ChecklistItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemViewModel.swift; sourceTree = "<group>"; };
 		A3FDB4382DA5ABB4006652F2 /* PersonalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalView.swift; sourceTree = "<group>"; };
-		A3FDB43A2DA98BF7006652F2 /* Animal Product Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animal Product Calculator.swift"; sourceTree = "<group>"; };
 		A3FDB43B2DA98BF7006652F2 /* Animal Product Daily Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animal Product Daily Calculator.swift"; sourceTree = "<group>"; };
-		A3FDB43C2DA98BF7006652F2 /* Animal Product Land Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animal Product Land Calculator.swift"; sourceTree = "<group>"; };
+		FC1459882DA98D3800BF805D /* Animal Product Daily Quiz View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Animal Product Daily Quiz View.swift"; path = "Quokka/Views/Animal Product Daily Quiz View.swift"; sourceTree = SOURCE_ROOT; };
 		FC3D25582D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonFootprintCalculator.swift; sourceTree = "<group>"; };
 		FCFFA4322D97113F0004C662 /* Air Travel View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Air Travel View.swift"; sourceTree = "<group>"; };
 		FCFFA4332D97113F0004C662 /* Animal Product Question View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Animal Product Question View.swift"; sourceTree = "<group>"; };
@@ -179,9 +177,7 @@
 		A351CD812D6CEECA00C4DBF2 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				A3FDB43A2DA98BF7006652F2 /* Animal Product Calculator.swift */,
 				A3FDB43B2DA98BF7006652F2 /* Animal Product Daily Calculator.swift */,
-				A3FDB43C2DA98BF7006652F2 /* Animal Product Land Calculator.swift */,
 				FC3D25582D6E4BC800BC36A5 /* CarbonFootprintCalculator.swift */,
 				60668B7B2D7B6227001E72B8 /* MainTabViewViewModel.swift */,
 				60668B792D7B5F79001E72B8 /* NewItemViewViewModel.swift */,
@@ -204,6 +200,7 @@
 		FCFFA43F2D97113F0004C662 /* Quiz Views */ = {
 			isa = PBXGroup;
 			children = (
+				FC1459882DA98D3800BF805D /* Animal Product Daily Quiz View.swift */,
 				A3FDB4382DA5ABB4006652F2 /* PersonalView.swift */,
 				FCFFA4322D97113F0004C662 /* Air Travel View.swift */,
 				FCFFA4332D97113F0004C662 /* Animal Product Question View.swift */,
@@ -311,9 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3ED2BCE2D91CA68003B0C4A /* UserData.swift in Sources */,
-				A3FDB43F2DA98BF7006652F2 /* Animal Product Land Calculator.swift in Sources */,
 				60668B7C2D7B6227001E72B8 /* MainTabViewViewModel.swift in Sources */,
-				A3FDB43D2DA98BF7006652F2 /* Animal Product Calculator.swift in Sources */,
 				FCFFA4482D97113F0004C662 /* Private Transport View.swift in Sources */,
 				FCFFA4502D9C61AE0004C662 /* Land Grid View.swift in Sources */,
 				A351CD752D6CE87A00C4DBF2 /* ContentView.swift in Sources */,
@@ -333,6 +328,7 @@
 				FCFFA4432D97113F0004C662 /* Consumption View.swift in Sources */,
 				A31BD5892D9C5DCD005BDCBE /* SaveView.swift in Sources */,
 				FCFFA44C2D97113F0004C662 /* Waste Production View.swift in Sources */,
+				FC1459892DA98D3800BF805D /* Animal Product Daily Quiz View.swift in Sources */,
 				60668B7A2D7B5F79001E72B8 /* NewItemViewViewModel.swift in Sources */,
 				FCFFA44A2D97113F0004C662 /* Quiz Navigation View.swift in Sources */,
 				FCFFA44B2D97113F0004C662 /* Recycling View.swift in Sources */,
