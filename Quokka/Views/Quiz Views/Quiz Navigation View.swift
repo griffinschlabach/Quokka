@@ -21,6 +21,7 @@ struct QuizView: View {
     // Computed property for individual quiz views
     var quizPages: [AnyView] {
         [
+            AnyView(PersonalView(userStart: $userStart, decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID: $savedUserUUID)),
             AnyView(Animal_Product_Question_View(userStart: $userStart)),
             AnyView(Food_Locality_View(userStart: $userStart)),
             AnyView(Waste_Production_View(userStart: $userStart)),

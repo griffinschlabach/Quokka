@@ -19,7 +19,7 @@ struct MainTabView: View {
     //user id we look at
     @Binding var savedUserUUID: String?
     
-    @State var checklistItems: [ChecklistItem] = []
+    //@State var checklistItems: [ChecklistItem] = []
     
     var body: some View {
         
@@ -49,34 +49,34 @@ struct MainTabView: View {
             }
             
             //checklist
-            NavigationView {
-                List {
-                    ForEach($checklistViewModel.checklistItems) { $item in
-                        HStack {
-                            ChecklistView(item: $item)
-                            Text("\(item.isChecked)")
-                        }
-                    }
-                }
-                .navigationTitle("Checklist")
-                .toolbar {
-                    Button(action: {
-                        addNewItem()
-                    }, label: {
-                        Image(systemName: "plus")
-                    })
-                    Button(action: {
-                        pullChecklistItems()
-                    }, label: {
-                        Image(systemName: "circle")
-                    })
-                    
-                }
-            }
-            .tabItem {
-                Image(systemName:"person.circle.fill")
-                Text("Checklist")
-            }
+//            NavigationView {
+//                List {
+//                    ForEach($checklistViewModel.checklistItems) { $item in
+//                        HStack {
+//                            ChecklistView(item: $item)
+//                            Text("\(item.isChecked)")
+//                        }
+//                    }
+//                }
+//                .navigationTitle("Checklist")
+//                .toolbar {
+//                    Button(action: {
+//                        addNewItem()
+//                    }, label: {
+//                        Image(systemName: "plus")
+//                    })
+//                    Button(action: {
+//                        pullChecklistItems()
+//                    }, label: {
+//                        Image(systemName: "circle")
+//                    })
+//                    
+//                }
+//            }
+//            .tabItem {
+//                Image(systemName:"person.circle.fill")
+//                Text("Checklist")
+//            }
             
             //profile
             MainProfileView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID: $savedUserUUID)

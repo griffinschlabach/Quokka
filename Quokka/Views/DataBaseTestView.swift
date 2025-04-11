@@ -37,17 +37,17 @@ struct DataBaseTestView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
-            Button(action: {
-                addItemToUser(userID: savedUserUUID ?? "No ID", data: ChecklistItem(name:"eat_more_garbage"))
-            }) {
-                Text("Add Item to User itemList")
-                    .font(.headline)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-            }
+//            Button(action: {
+//                addItemToUser(userID: savedUserUUID ?? "No ID", data: ChecklistItem(name:"eat_more_garbage"))
+//            }) {
+//                Text("Add Item to User itemList")
+//                    .font(.headline)
+//                    .padding()
+//                    .frame(maxWidth: .infinity)
+//                    .background(Color.blue)
+//                    .foregroundColor(.white)
+//                    .cornerRadius(10)
+//            }
             
             //if savedUserUUID == nil, this button will not retrieve any data
             Button(action: {
@@ -89,6 +89,8 @@ struct DataBaseTestView: View {
                         .font(.headline)
                     Text("Email: \(user.email)")
                         .font(.subheadline)
+                    Text("Land Saved: \(user.landSaved)")
+                        .font(.subheadline)
                 }
                 .padding()
                 .background(Color.gray.opacity(0.1))
@@ -97,6 +99,24 @@ struct DataBaseTestView: View {
                 Text(statusMessage)
                     .font(.body)
                     .foregroundColor(.gray)
+            }
+            
+            if let uuid = savedUserUUID {
+                Button(action: {
+                    Task {
+                        decodedUserData?.landSaved += 5.0
+                        editLandSaved(newValue: decodedUserData?.landSaved ?? 999)
+                        await getUserFromFirebase(id:savedUserUUID)
+                    }
+                }) {
+                    Text("Add 5 to Land Saved")
+                        .font(.headline)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.green)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
             }
             
             Spacer()
@@ -131,21 +151,39 @@ struct DataBaseTestView: View {
         }
     }
     
-    public func addItemToUser(userID:String, data:ChecklistItem) {
-        let itemsRef = Database.database().reference().child("users/\(userID)").child("itemList")
-        let itemRef = itemsRef.child(data.name) //name of position in the database
-     
-        //converts checklist item properties to String:Any Form
+    public func editLandSaved(newValue :Double) {
         
-        var formatted = data.toDictionary()
-        
-        //creates value at the position
-        itemRef.setValue(formatted) { (error, _) in
-            if let error = error {
-                statusMessage = "Failed to write: \(error.localizedDescription)"
+        if let uuid = savedUserUUID {
+            
+            let varRef = Database.database().reference().child("users/\(uuid)/landSaved")
+            
+            //creates value at the position
+            varRef.setValue(newValue) { (error, _) in
+                if let error = error {
+                    statusMessage = "Failed to write: \(error.localizedDescription)"
+                } else { //if there's no error it saves the UUID
+                    savedUserUUID = uuid //saves the id upon creation of the user for later use
+                    statusMessage = "Wrote user with UUID: \(uuid)"
+                }
             }
         }
     }
+    
+//    public func addItemToUser(userID:String, data:ChecklistItem) {
+//        let itemsRef = Database.database().reference().child("users/\(userID)").child("itemList")
+//        let itemRef = itemsRef.child(data.name) //name of position in the database
+//     
+//        //converts checklist item properties to String:Any Form
+//        
+//        var formatted = data.toDictionary()
+//        
+//        //creates value at the position
+//        itemRef.setValue(formatted) { (error, _) in
+//            if let error = error {
+//                statusMessage = "Failed to write: \(error.localizedDescription)"
+//            }
+//        }
+//    }
     
     //TODO - add an id parameter so we can access the userdata without instant creation
     public func readUserFromFirebase() async {

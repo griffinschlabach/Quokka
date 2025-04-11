@@ -208,4 +208,8 @@ class UserData: ObservableObject, Identifiable {
             ]
         }
     
+    public func editLandSaved(newValue:Double) {
+        self.landSaved = newValue
+    }
+    
 }
