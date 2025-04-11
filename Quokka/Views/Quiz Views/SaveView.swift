@@ -48,7 +48,7 @@ struct SaveView: View {
             "name": "Lucy",
             "email": "lucy@gmail.com",
         ]
-        var userData = extraUserData.merging(userDataTwo) { (current, new) in new }
+        var userData = userDataTwo.merging(extraUserData) { (current, new) in new }
         
         
         
