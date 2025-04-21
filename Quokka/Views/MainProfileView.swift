@@ -31,6 +31,7 @@ struct MainProfileView: View {
                 Text("Diet Footprint: \(String(format: "%.2f", user.dietFootprint))")
                 //Text("Default Checklist Item name: \(user.itemList[0].name)")
                 //Text("Default Checklist Item checked: \(user.itemList[0].isChecked)")
+                Land_Grid_View()
             }
             .padding()
             .background(Color.gray.opacity(0.1))

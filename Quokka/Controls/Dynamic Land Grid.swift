@@ -50,23 +50,32 @@ struct DynamicLandGrid: View {
         GeometryReader { geo in
             let dims = gridDimensions
             let tileSize = min(geo.size.width / CGFloat(dims.columns), geo.size.height / CGFloat(dims.rows))
+            let gridWidth = tileSize * CGFloat(dims.columns)
+            let gridHeight = tileSize * CGFloat(dims.rows)
 
-            VStack(spacing: 0) {
-                ForEach(gridTiles) { row in
-                    HStack(spacing: 0) {
-                        ForEach(row) { tile in
-                            Image(tile.imageName)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: tileSize, height: tileSize)
-                                .clipped()
+            ZStack {
+                // The grid
+                VStack(spacing: 0) {
+                    ForEach(gridTiles) { row in
+                        HStack(spacing: 0) {
+                            ForEach(row) { tile in
+                                Image(tile.imageName)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: tileSize, height: tileSize)
+                                    .clipped()
+                            }
                         }
                     }
                 }
+
+                // The center image that scales proportionately
+                Image("centerIcon") // Replace with your asset name
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: tileSize, height: tileSize) // Scales with tiles
             }
-            .frame(width: tileSize * CGFloat(dims.columns),
-                   height: tileSize * CGFloat(dims.rows),
-                   alignment: .center)
+            .frame(width: gridWidth, height: gridHeight, alignment: .center)
             .position(x: geo.size.width / 2, y: geo.size.height / 2)
         }
     }
@@ -76,6 +85,7 @@ struct DynamicLandGrid: View {
         return max(1, Int(scaled.rounded(.up)))
     }
 }
+
 
 extension Array: Identifiable where Element: Identifiable {
     public var id: UUID { UUID() }
