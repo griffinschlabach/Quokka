@@ -25,13 +25,11 @@ struct MainProfileView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text("Name: \(user.name)")
                     .font(.headline)
-                Text("Email: \(user.email)")
-                    .font(.subheadline)
-                Text("Long Flight Hours: \(user.longFlightHours)")
-                Text("Diet Footprint: \(String(format: "%.2f", user.dietFootprint))")
+                Text("Land Saved: \(user.landSaved) sq m")
+                    .font(.headline)
                 //Text("Default Checklist Item name: \(user.itemList[0].name)")
                 //Text("Default Checklist Item checked: \(user.itemList[0].isChecked)")
-                Land_Grid_View()
+                Land_Grid_View(decodedUserData:$decodedUserData)
             }
             .padding()
             .background(Color.gray.opacity(0.1))

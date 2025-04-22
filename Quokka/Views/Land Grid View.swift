@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct Land_Grid_View: View {
+    
     @State private var scaleValue: Double = 1
+    @Binding var decodedUserData:UserData?
 
         var body: some View {
             VStack {
@@ -22,5 +24,5 @@ struct Land_Grid_View: View {
 }
 
 #Preview {
-    Land_Grid_View()
+    Land_Grid_View(decodedUserData: Binding.constant(UserData(data: ["name" : ""])))
 }
