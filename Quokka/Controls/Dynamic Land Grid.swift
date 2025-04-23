@@ -16,7 +16,7 @@ struct LandTile: Identifiable {
 struct DynamicLandGrid: View {
     @Binding var scaleValue: Double
 
-    let tileImageNames: [String] = ["tile1"]
+    let tileImageNames: [String] = ["tile1","tile2","tile3","tile4","tile5"]
 
     private var gridDimensions: (rows: Int, columns: Int) {
         var tileCount = calculateTileCount(for: scaleValue)
@@ -64,6 +64,7 @@ struct DynamicLandGrid: View {
                                     .scaledToFill()
                                     .frame(width: tileSize, height: tileSize)
                                     .clipped()
+                                    
                             }
                         }
                     }

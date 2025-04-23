@@ -20,6 +20,9 @@ struct Land_Grid_View: View {
                 Slider(value: $scaleValue, in: 1...40)
                     .padding()
             }
+            .onAppear(perform: {
+                scaleValue = decodedUserData?.landSaved ?? 1.0
+            })
         }
 }
 
