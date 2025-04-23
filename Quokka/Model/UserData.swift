@@ -50,7 +50,7 @@ class UserData: ObservableObject, Identifiable {
         self.distanceTrainKm = data["distanceTrainKm"] as? Double ?? 1.0
         self.shortFlightHours = data["shortFlightHouse"] as? Double ?? 1.0
         self.longFlightHours = data["longFlightHours"] as? Double ?? 1.0
-        self.landSaved = data["landSaved"] as? Double ?? 0.0
+        self.landSaved = data["landSaved"] as? Double ?? 2.0
         
         
         self.itemList = []

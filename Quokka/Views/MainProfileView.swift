@@ -25,8 +25,10 @@ struct MainProfileView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text("Name: \(user.name)")
                     .font(.title)
-                Text("Land Saved: \(user.landSaved) sq m")
-                    .font(.title)
+                Text("Land Consumed Annually: \(String(format: "%.2f", user.totalLandUsage)) sq km")
+                    .font(.headline)
+                Text("Land Saved: \(String(format: "%.1f",user.landSaved)) sq m")
+                    .font(.headline)
                 //Text("Default Checklist Item name: \(user.itemList[0].name)")
                 //Text("Default Checklist Item checked: \(user.itemList[0].isChecked)")
                 Land_Grid_View(decodedUserData:$decodedUserData)

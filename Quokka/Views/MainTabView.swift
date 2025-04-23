@@ -19,30 +19,26 @@ struct MainTabView: View {
     //user id we look at
     @Binding var savedUserUUID: String?
     
-    //@State var checklistItems: [ChecklistItem] = []
+    @State var selectedTab = 1
     
     var body: some View {
         
-        TabView {
+        TabView(selection:$selectedTab) {
             
             //goals
             VStack {
-                
                 Text("Goals")
                     .font(Constants.titlefont)
                     .padding(.top, 20)
-                
                 Spacer()
                 GoalsView()
-                
                 Spacer()
             }
-            
             .tabItem {
                 Image(systemName:"person.circle.fill")
                 Text("Goals")
                 
-            }
+            }.tag(0)
             
             
             //profile
@@ -51,6 +47,7 @@ struct MainTabView: View {
                     Image(systemName:"person.circle.fill")
                     Text("Profile")
                 }
+                .tag(1)
             
             //test
             DataBaseTestView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID:$savedUserUUID)
@@ -58,6 +55,7 @@ struct MainTabView: View {
                     Image(systemName:"person.circle.fill")
                     Text("TEST TEST")
                 }
+                .tag(2)
             
         }
     }

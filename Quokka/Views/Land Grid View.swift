@@ -21,7 +21,7 @@ struct Land_Grid_View: View {
                     .padding()
             }
             .onAppear(perform: {
-                scaleValue = decodedUserData?.landSaved ?? 1.0
+                scaleValue = decodedUserData?.totalLandUsage ?? 1.0
             })
         }
 }

@@ -7,6 +7,8 @@
 import SwiftUI
 struct GoalsView: View {
     
+    
+    
     var daisyGoal = 50.0
     var sunflowerGoal = 100.0
     var wildflowerGoal = 200.0
