@@ -17,8 +17,8 @@ struct Land_Grid_View: View {
                 DynamicLandGrid(scaleValue: $scaleValue)
                     .padding()
 
-                Slider(value: $scaleValue, in: 1...40)
-                    .padding()
+//                Slider(value: $scaleValue, in: 1...50)
+//                    .padding()
             }
             .onAppear(perform: {
                 scaleValue = decodedUserData?.totalLandUsage ?? 1.0

@@ -22,42 +22,52 @@ struct MainProfileView: View {
     var body: some View {
         
         if let user = decodedUserData {
-            VStack(alignment: .leading, spacing: 10) {
-                Text("Name: \(user.name)")
-                    .font(.title)
-                Text("Land Consumed Annually: \(String(format: "%.2f", user.totalLandUsage)) sq km")
-                    .font(.headline)
-                Text("Land Saved: \(String(format: "%.1f",user.landSaved)) sq m")
-                    .font(.headline)
-                //Text("Default Checklist Item name: \(user.itemList[0].name)")
-                //Text("Default Checklist Item checked: \(user.itemList[0].isChecked)")
-                Land_Grid_View(decodedUserData:$decodedUserData)
-                Button(action: {
-                    savedUserUUID = nil
-                    decodedUserData = nil
-                }) {
-                    Text("Sign Out")
+            ZStack {
+                Image("c-background-3")
+                    .resizable()
+                    .ignoresSafeArea()
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Name: \(user.name)")
+                        .font(.title)
+                    Text("Land Consumed Annually: \(String(format: "%.2f", user.totalLandUsage)) sq km")
                         .font(.headline)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.c_orange)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+                    Text("Land Saved: \(String(format: "%.1f",user.landSaved)) sq m")
+                        .font(.headline)
+                    //Text("Default Checklist Item name: \(user.itemList[0].name)")
+                    //Text("Default Checklist Item checked: \(user.itemList[0].isChecked)")
+                    Land_Grid_View(decodedUserData:$decodedUserData)
+                    Button(action: {
+                        savedUserUUID = nil
+                        decodedUserData = nil
+                    }) {
+                        Text("Sign Out")
+                            .font(.headline)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.c_orange)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
                 }
+                .padding()
+                //.background(Color.gray.opacity(0.1))
+                .cornerRadius(8)
             }
-            .padding()
-            .background(Color.gray.opacity(0.1))
-            .cornerRadius(8)
         }
         else {
-            VStack {
-                QuizView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID: $savedUserUUID)
-                    .onChange(of: savedUserUUID) { newUUID in
-                        guard let uuid = newUUID else { return }
-                        Task {
-                            await getUserFromFirebase(id: uuid)
+            ZStack {
+                Image("c-background-2")
+                    .resizable()
+                    .ignoresSafeArea()
+                VStack {
+                    QuizView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID: $savedUserUUID)
+                        .onChange(of: savedUserUUID) { newUUID in
+                            guard let uuid = newUUID else { return }
+                            Task {
+                                await getUserFromFirebase(id: uuid)
+                            }
                         }
-                    }
+                }
             }
         }
         

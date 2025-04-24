@@ -7,14 +7,14 @@
 import SwiftUI
 struct GoalsView: View {
     
-    
+    @Binding var decodedUserData: UserData?
     
     var daisyGoal = 50.0
     var sunflowerGoal = 100.0
     var wildflowerGoal = 200.0
     var forestGoal = 500.0
     
-    var currentStatus = 20.0
+    @State var currentStatus = 20.0
     
     var body: some View {
         
@@ -97,10 +97,13 @@ struct GoalsView: View {
             }
            
         }
+        .onAppear(perform: {
+            currentStatus = (decodedUserData?.totalLandUsage ?? 0.01)
+        })
         
     }
 }
 #Preview {
-    GoalsView()
+    GoalsView(decodedUserData: Binding.constant(UserData(data: ["name" : ""])))
 }
 

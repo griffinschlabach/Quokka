@@ -26,22 +26,38 @@ struct MainTabView: View {
         TabView(selection:$selectedTab) {
             
             //goals
-            VStack {
-                Text("Goals")
-                    .font(Constants.titlefont)
-                    .padding(.top, 20)
-                Spacer()
-                GoalsView()
-                Spacer()
-            }
-            .tabItem {
+            ZStack {
+                Image("c-background-1")
+                    .resizable()
+                    .ignoresSafeArea()
+                
+                VStack {
+                    
+                    HStack {
+                        Text("Goals")
+                            .font(Constants.titlefont)
+                            .padding(.top, 20)
+                            .padding(.leading,20)
+                            .foregroundColor(Color.black)
+                        Spacer()
+                    }
+                    Spacer()
+                    GoalsView(decodedUserData:$decodedUserData)
+                    Spacer()
+                }
+                
+                
+            }.tabItem {
                 Image(systemName:"person.circle.fill")
+                    .foregroundColor(.black)
                 Text("Goals")
+                
                 
             }.tag(0)
             
             
             //profile
+            
             MainProfileView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID: $savedUserUUID)
                 .tabItem {
                     Image(systemName:"person.circle.fill")
@@ -50,12 +66,12 @@ struct MainTabView: View {
                 .tag(1)
             
             //test
-            DataBaseTestView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID:$savedUserUUID)
-                .tabItem {
-                    Image(systemName:"person.circle.fill")
-                    Text("TEST TEST")
-                }
-                .tag(2)
+            //            DataBaseTestView(decodedUserData: $decodedUserData, statusMessage: $statusMessage, savedUserUUID:$savedUserUUID)
+            //                .tabItem {
+            //                    Image(systemName:"person.circle.fill")
+            //                    Text("TEST TEST")
+            //                }
+            //                .tag(2)
             
         }
     }
